@@ -3,6 +3,7 @@ import 'package:my_shop/models/custom_material_color.dart';
 import 'package:my_shop/providers/orders.dart';
 import 'package:my_shop/providers/products_provider.dart';
 import 'package:my_shop/screens/cart_screens.dart';
+import 'package:my_shop/screens/orders_screen.dart';
 import 'package:my_shop/screens/product_detail_screen.dart';
 import 'package:my_shop/screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         routes: {
           ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
           CartScreen.routeName: (context) => const CartScreen(),
+          OrdersScreen.routeName: (context) => OrdersScreen(),
         },
       ),
     );
