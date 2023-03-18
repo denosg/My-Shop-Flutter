@@ -39,6 +39,8 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
+              //Establishes a connection to the Scaffold of the nearest page (in products_overview) (Toast Like in Android)
+              //Scaffold.of(context)
             },
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).accentColor,
