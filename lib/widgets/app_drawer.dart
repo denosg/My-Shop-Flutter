@@ -29,11 +29,12 @@ class AppDrawer extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.edit),
-            title: const Text('Manage Products'),
-            onTap: () =>
-                Navigator.of(context).pushNamed(UserProductsScreen.routeName),
-          ),
+              leading: const Icon(Icons.edit),
+              title: const Text('Manage Products'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed(UserProductsScreen.routeName);
+              }),
         ],
       ),
     );
