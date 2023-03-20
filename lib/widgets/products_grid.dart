@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 class ProductsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //productsData gets the ProductsProvider class
     final productsData = Provider.of<ProductsProvider>(context);
+    //products gets the items from the class using the getter .items
     final products = productsData.items;
     return GridView.builder(
       padding: const EdgeInsets.all(10),
@@ -16,13 +18,11 @@ class ProductsGrid extends StatelessWidget {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),
+      //ChangeNotifierProvider.value is actually deprecated
+      //and we should use the create: tag to make the constructors
       itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
         value: products[index],
-        child: ProductItem(
-            // id: products[index].id,
-            // title: products[index].title,
-            // imageUrl: products[index].imageUrl,
-            ),
+        child: ProductItem(),
       ),
       itemCount: products.length,
     );

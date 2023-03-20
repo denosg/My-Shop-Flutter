@@ -5,16 +5,10 @@ import 'package:my_shop/screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
-  // final String id;
-  // final String title;
-  // final String imageUrl;
-
-  // const ProductItem(
-  //     {required this.id, required this.title, required this.imageUrl});
-
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
+    //Global cart Cart
     final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -35,7 +29,7 @@ class ProductItem extends StatelessWidget {
                 product.isFavorite ? Icons.favorite : Icons.favorite_border),
             color: Theme.of(context).accentColor,
           ),
-          //Add to Card Button
+          //Add to Cart Button
           trailing: IconButton(
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
@@ -46,8 +40,10 @@ class ProductItem extends StatelessWidget {
             color: Theme.of(context).accentColor,
           ),
         ),
+        //Shows the ProductDetailScreen when pressing on a product
         child: GestureDetector(
           onTap: () {
+            //To show the product in ProductDetailScreen, we use the .id argument to load the product there
             Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
                 arguments: product.id);
           },

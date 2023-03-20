@@ -18,6 +18,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //Providers for the data (sync data across multiple objects)
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(

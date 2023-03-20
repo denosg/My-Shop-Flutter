@@ -10,6 +10,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Gets the cart content from the Global cart Cart
     final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
@@ -34,6 +35,7 @@ class CartScreen extends StatelessWidget {
                     width: 10,
                   ),
                   const Spacer(),
+                  //Shows the amount you need to spend
                   Chip(
                     label: Text(
                       '${cart.totalAmount.toStringAsFixed(2)} ron',
@@ -44,6 +46,7 @@ class CartScreen extends StatelessWidget {
                     ),
                     backgroundColor: const Color.fromRGBO(187, 168, 255, 1),
                   ),
+                  //Order button
                   TextButton(
                     child: Text(
                       'ORDER NOW',
@@ -53,8 +56,10 @@ class CartScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
+                      //Saves the order (Open Orders object for more info regarding method)
                       Provider.of<Orders>(context, listen: false).addOrder(
                           cart.items.values.toList(), cart.totalAmount);
+                      //Clears the cart after the order has been made
                       cart.clearCart();
                     },
                   )
@@ -65,6 +70,7 @@ class CartScreen extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
+          //Cart items
           if (cart.itemCount != 0)
             Expanded(
               child: ListView.builder(
@@ -74,6 +80,7 @@ class CartScreen extends StatelessWidget {
                   var price = cart.items.values.toList()[index].price;
                   var quantity = cart.items.values.toList()[index].quantity;
                   var title = cart.items.values.toList()[index].title;
+                  //Builds the UI for CartItem
                   return CartItem(
                     id,
                     productId,

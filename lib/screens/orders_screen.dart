@@ -10,6 +10,7 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Gets the Global data for the orders
     final orderData = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
@@ -17,6 +18,7 @@ class OrdersScreen extends StatelessWidget {
       ),
       drawer: const AppDrawer(),
       body: ListView.builder(
+        //Creates the OrderItem
         itemBuilder: (ctx, index) => OrderItem(orderData.orders[index]),
         itemCount: orderData.ordersCount,
       ),

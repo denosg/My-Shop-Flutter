@@ -14,7 +14,9 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Option to delete the item from the list
     return Dismissible(
+      //Alert Dialog
       confirmDismiss: (direction) {
         return showDialog(
             context: context,
@@ -23,6 +25,7 @@ class CartItem extends StatelessWidget {
                 title: const Text('Are you sure ?'),
                 content: const Text(
                     'Do you want to remove the item from the cart ?'),
+                //Options for the user regarding deleting the product
                 actions: [
                   TextButton(
                       onPressed: () {
@@ -38,11 +41,14 @@ class CartItem extends StatelessWidget {
               );
             });
       },
+      //Sets the key for each item so it shows and deletes the right one
       key: ValueKey(id),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) {
+        //Removes the item from the cart (Watch Cart Class for more info regarding .removeItem method)
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
+      //Creates the deleting UI
       background: Container(
         margin:
             const EdgeInsetsDirectional.symmetric(horizontal: 15, vertical: 4),
@@ -55,6 +61,7 @@ class CartItem extends StatelessWidget {
           size: 40,
         ),
       ),
+      //Creates the item from cart UI
       child: Card(
         margin:
             const EdgeInsetsDirectional.symmetric(horizontal: 15, vertical: 4),

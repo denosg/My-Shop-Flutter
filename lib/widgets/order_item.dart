@@ -15,10 +15,12 @@ class OrderItem extends StatefulWidget {
 }
 
 class _OrderItemState extends State<OrderItem> {
+  //_expanded gives the user the option to see the items which he bought
   var _expanded = false;
 
   @override
   Widget build(BuildContext context) {
+    var cartItem = widget.order;
     return Card(
       margin: const EdgeInsets.all(10),
       child: Column(
@@ -35,10 +37,12 @@ class _OrderItemState extends State<OrderItem> {
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
             ),
           ),
+          //Shows the list of products bought
           if (_expanded)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
               height: min(widget.order.products.length * 20.0 + 30, 130),
+              //Creates the list of products bought
               child: ListView(
                   children: widget.order.products
                       .map((prod) => Row(
