@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_shop/providers/product.dart';
 
+//TODO: Added internet database using Firebase in my_shop_with_flutter
+
 class ProductsProvider with ChangeNotifier {
   List<Product> _items = [
     Product(
